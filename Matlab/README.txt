@@ -1,5 +1,5 @@
 
-Code for 'A Majorization-Minimization Gauss-Newton Method for 1-Bit Matrix Completion'
+Matlab code for 'A Majorization-Minimization Gauss-Newton Method for 1-Bit Matrix Completion'
 
 This folder includes code for implementing the MMGN method for 1-bit matrix completion in R.
 
