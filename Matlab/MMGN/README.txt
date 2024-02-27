@@ -8,8 +8,7 @@ This folder includes code for implementing the MMGN method for 1-bit matrix comp
 MMGN_probit.m implements the MMGN method for 1-bit matrix completion under the probit noise model with a given rank constraint parameter r.
 MMGN_logist.m is its counterpart for the logistic noise model.
 
-MMGN_probit_auto.m implements the MMGN method for 1-bit matrix completion under the probit noise model with a data-driven approach for selecting 
-                   the rank constraint parameter r.
+MMGN_probit_auto.m implements the MMGN method for 1-bit matrix completion under the probit noise model with a data-driven approach for selecting the rank constraint parameter r.
 MMGN_logist_auto.m is its counterpart for the logistic noise model.
 
 obj_1bit.m computes the negative log-likelihood / objective for the 1-bit matrix completion.
