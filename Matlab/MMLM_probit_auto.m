@@ -1,19 +1,19 @@
-function [U, V, rhat, err, outs] = MMGN_logist_auto(Y, ind_omega, sigma, M, opts)
-% This function implements MMGN for 1-bit matrix completion under the logistic
+function [U, V, rhat, err, outs] = MMLM_probit_auto(Y, ind_omega, lambda,  sigma, M, opts)
+% This function implements MMGN for 1-bit matrix completion under the probit
 % noise model with a data driven approach for selecting the rank constraint
-% parameter r.
+% parameter r
 
 % --INPUTS-----------------------------------------------------------------------
 % Y: observed binary data matrix, unobserved entries are coded as zero
 % ind_omega: the indicator vector of observations (column-major vectorization)
+% lambda: the regularization parameter for the ridge penalty in MMLM
 % sigma: the noise level, assumed to be known 
 % M: the true underlying matrix (for performance tracking)
-% opts: an optional structure containing various options that users may choose to set.
+% opts: an optional struct containing various options that users may choose to set.
 %       opts includes the following parameters
         % rSeq: a grid of values for the rank parameter (default: 1 to 5)
         % maxiters: the maximum number of iterations (default: 100)
         % tol: a tolerance for early stopping (default: 1e-4)
-        % solver: which solver to use for the LS problem
         % stopping: the criteron used for early stopping
         %          'objective': early stop when the relative change in the
         %                       objective is less than tol (default)
@@ -56,7 +56,6 @@ function [U, V, rhat, err, outs] = MMGN_logist_auto(Y, ind_omega, sigma, M, opts
     % for MMGN
     maxiters = opts.maxiters;
     tol = opts.tol;
-    solver = opts.solver;
     stopping = opts.stopping;
     alpha0 = opts.alpha0;
     % for selecting r
@@ -65,33 +64,33 @@ function [U, V, rhat, err, outs] = MMGN_logist_auto(Y, ind_omega, sigma, M, opts
     seed  = opts.seed;
     rate = opts.rate;
 
-    %%
-    % Logistic model
-    f       = @(x) (1 ./ (1 + exp(-x/sigma)));
-    %fprime  = @(x) ((1/sigma)*exp(x/sigma) ./ (1 + exp(x/sigma)).^2);
+    %%  
+    % Probit model
+    f      = @(x) normcdf(x,0,sigma);
+    %fprime = @(x) normpdf(x,0,sigma);
     [m, n] = size(Y);
 
-%%  Set up the outs structure
+    %%  Set up the outs structure
     outs = [];
-    outs.errSeq = nan(maxiters, 1); 
-    outs.relchange = nan(maxiters, 1); 
-    outs.obj = nan(maxiters, 1); 
+    outs.errSeq = nan(maxiters, 1);
+    outs.relchange = nan(maxiters, 1);
+    outs.obj = nan(maxiters, 1);
     
     outs.Mcell = cell(numR, 1);
     outs.CVrelerr = nan(numR, 1);
     outs.CVloglik = nan(numR, 1);
     
-%% Generate the training data set 
-   rng(seed);
-   omega = find(ind_omega);
-   loc_train = randsample(omega, ceil(rate*length(omega)));
-   loc_test =  setdiff(omega, loc_train);
-   ind_train = zeros(m*n, 1);
-   ind_train(loc_train)=1;
-   ind_test = zeros(m*n, 1);
-   ind_test(loc_test)=1;
+    %% Generate the training data set
+    rng(seed);
+    omega = find(ind_omega);
+    loc_train = randsample(omega, ceil(rate*length(omega)));
+    loc_test =  setdiff(omega, loc_train);
+    ind_train = zeros(m*n, 1);
+    ind_train(loc_train)=1;
+    ind_test = zeros(m*n, 1);
+    ind_test(loc_test)=1;
    
-%% for initialization
+    %% for initialization
     [UU,S,VV] = svd(Y);
     D = (1+Y)/2;
     d = D(ind_test>0);
@@ -99,17 +98,17 @@ function [U, V, rhat, err, outs] = MMGN_logist_auto(Y, ind_omega, sigma, M, opts
     rhat = 1;
     mll = -inf;
     U00 = UU(:, 1)*sqrt(S(1, 1));
-    V00 = VV(:, 1)*sqrt(S(1, 1));  
-%% main loop to select r
+    V00 = VV(:, 1)*sqrt(S(1, 1));    
+    %% main loop to select r
     for k = 1:numR
         % set the estimated r in this loop
-        r = rSeq(k); 
+        r = rSeq(k);
         % initialization according to r
         U0 = UU(:, 1:r)*sqrt(S(1:r, 1:r));
         V0 = VV(:, 1:r)*sqrt(S(1:r, 1:r));
-
-        [U, V, relerr] = MMGN_logist(Y, ind_train, sigma, r, U0, V0, M, 'maxiters',maxiters, 'tol',tol,...
-                                                   'solver',solver, 'stopping',stopping, 'alpha0', alpha0);
+        
+        [U, V, relerr] = MMLM_probit(Y, ind_train, sigma, r, lambda, U0, V0, M, 'maxiters',maxiters, 'tol',tol,...
+                                                   'stopping',stopping ,'alpha0', alpha0);
         
         Mhat = U*V';
         outs.Mcell{k,1} = Mhat;
@@ -117,7 +116,7 @@ function [U, V, rhat, err, outs] = MMGN_logist_auto(Y, ind_omega, sigma, M, opts
         
         % compute the log-likelihood on the testing set
         outs.CVloglik(k, 1) = -obj_1bit(d, Mhat(ind_test>0), f);
-         
+        
         % for the overall
         if outs.CVloglik(k, 1)>mll
             rhat = r;
@@ -126,15 +125,16 @@ function [U, V, rhat, err, outs] = MMGN_logist_auto(Y, ind_omega, sigma, M, opts
             V00 = V;
         end
     end
+    
     %% Now use rhat to reestimate the model
-    [U, V, relerr, relchange, obj] = MMGN_logist(Y, ind_omega, sigma, rhat, U00, V00, M, 'maxiters',maxiters, 'tol',tol,...
-                                                             'solver',solver, 'stopping',stopping, 'alpha0', alpha0);
+    [U, V, relerr, relchange, obj] = MMLM_probit(Y, ind_omega, sigma, rhat, lambda, U00, V00, M, 'maxiters',maxiters,...
+                                                              'tol',tol, 'stopping',stopping, 'alpha0', alpha0);
     
     % save the outputs
     err = relerr(end);
-    outs.errSeq = relerr; 
-    outs.relchange = relchange; 
-    outs.obj = obj; 
+    outs.errSeq = relerr;
+    outs.relchange = relchange;
+    outs.obj = obj;
 end
 %%
 
@@ -149,18 +149,11 @@ function opts = setDefaults(opts)
             opts.maxiters = 100;
         end
         
-        
         %  tol
         if ~isfield(opts,'tol')
             opts.tol = 1e-4;
         end
   
-         %  solver
-        if ~isfield(opts,'solver')
-            opts.solver = 'PCG';
-        end
-        
-        
         %  stopping
         if ~isfield(opts,'stopping')
             opts.stopping = 'objective';
@@ -176,7 +169,7 @@ function opts = setDefaults(opts)
         if ~isfield(opts,'rate')
             opts.rate = 0.8;
         end
-        
+
 
         if ~isfield(opts,'alpha0')
             opts.alpha0 = 1;

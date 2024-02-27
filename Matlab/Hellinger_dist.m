@@ -1,6 +1,16 @@
 function [d] = Hellinger_dist(P, Q)
-%This function computes the Hellinger distance between two distirbution matrices P and Q
+% This function computes the Hellinger distance between two distribution matrices P and Q
 
+% --INPUTS-----------------------------------------------------------------------
+% P: a distribution matrix, each entry is in [0, 1]
+% Q: another distribution matrix, each entry is in [0, 1]
+
+% --OUTPUTS-----------------------------------------------------------------------
+% d: the Hellinger distance between P and Q
+
+% Xiaoqian Liu
+% Dec. 2023
+%%
 sum = 0;
 [m, n] = size(P);
 for i=1:m
