@@ -1,5 +1,6 @@
-Code for MaxNorm method by Cai and Zhou for 1-bit matrix completion.
+Matlab code for the MaxNorm method in 'A Majorization-Minimization Gauss-Newton Method for 1-Bit Matrix Completion'
 
+This folder includes code for implementing the MaxNorm method (from Cai and Zhou (2013)) for 1-bit matrix completion in Matlab.
 
 ===== Functions =====
 
