@@ -19,8 +19,7 @@ Our implementation of Manopt is built upon the Matlab toolbox 'manopt', which is
 
 ===== References =====
 
-Boumal, N., Mishra, B., Absil, P.-A., and Sepulchre, R. (2014), “Manopt, a Matlab Toolbox
-for Optimization on Manifolds,” Journal of Machine Learning Research, 15, 1455–1459
+Boumal, N., Mishra, B., Absil, P.-A., and Sepulchre, R. (2014), “Manopt, a Matlab Toolbox for Optimization on Manifolds,” Journal of Machine Learning Research, 15, 1455–1459
 
 
 
