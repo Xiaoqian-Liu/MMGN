@@ -24,3 +24,4 @@ function perplx = perplx_NBMF(D, U, V, omega)
     perplx = -sum(log(m(ix1))) - sum(log(1 - m(ix0)));
     perplx = perplx/nOmega; 
 end
+
