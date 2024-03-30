@@ -14,6 +14,7 @@ Please install the R package 'MMGN_0.1.0.tar.gz'. The included five functions, M
 demo.R shows two examples of running MMGN under the probit and logistic noise models, respectively.
 
 
+
 Xiaoqian Liu
 xiaoqian.liu1025@gmail.com
 
