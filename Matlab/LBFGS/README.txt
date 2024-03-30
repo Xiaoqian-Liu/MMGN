@@ -16,7 +16,9 @@ func_1bit.m computes the objective and gradient required by the LBFGS method.
 
 
 ===== Requirements =====
+
 Our implementation of LBFGS is built upon the Matlab toolbox 'poblano', which is available at  https://github.com/sandialabs/poblano_toolbox. Please download the whole package and put the above functions into the main folder to ensure everything works. 
+
 
 
 
