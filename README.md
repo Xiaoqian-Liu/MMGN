@@ -15,6 +15,12 @@ Cai, T. and Zhou, W.-X. (2013), “A max-norm constrained minimization approach 
 
 Davenport, M. A., Plan, Y., Van Den Berg, E., and Wootters, M. (2014), “1-bit matrix completion,” Information and Inference: A Journal of the IMA, 3, 189–223.
 
+Boumal, N., Mishra, B., Absil, P.-A., and Sepulchre, R. (2014), “Manopt, a Matlab Toolbox for Optimization on Manifolds,” Journal of Machine Learning Research, 15, 1455–1459
+
 De Leeuw, J. (2006), “Principal component analysis of binary data by iterated singular value decomposition,” Computational Statistics \& Data Analysis, 50, 21–39.
+
+Landgraf, A. J. and Lee, Y. (2020), “Dimensionality reduction for binary data through the projection of natural parameters,” Journal of Multivariate Analysis, 180, 104668.
+
+Magron, P. and F ́evotte, C. (2022), “A majorization-minimization algorithm for nonnegative binary matrix factorization,” IEEE Signal Processing Letters, 29, 1526–1530.
 
 Wang, M. and Li, L. (2020), “Learning from binary multiway data: Probabilistic tensor decomposition and its statistical optimality,” Journal of Machine Learning Research, 21, 6146–6183.
