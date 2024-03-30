@@ -11,6 +11,10 @@ MaxNorm_auto.m implements the MaxNorm method with a data-driven approach for sel
 proj.m includes a function required for the MaxNorm method, which is provided by Wenxin Zhou. 
 
 
+===== References =====
+
+Cai, T. and Zhou, W.-X. (2013), “A max-norm constrained minimization approach to 1-bit matrix completion,” The Journal of Machine Learning Research, 14, 3619–3647.
+
 
 Xiaoqian Liu
 xiaoqian.liu1025@gmail.com
