@@ -9,8 +9,14 @@ TraceNorm_auto.m implements the TraceNorm method for 1-bit matrix completion wit
 
 
 ===== Requirements =====
+
 Our implementation of TraceNorm is built upon the Matlab toolbox '1BMC-1.2', which is available at https://mdav.ece.gatech.edu/software/. Please download the whole package and put the above functions into the main folder to ensure everything works. 
 
+
+
+===== References =====
+
+Davenport, M. A., Plan, Y., Van Den Berg, E., and Wootters, M. (2014), “1-bit matrix completion,” Information and Inference: A Journal of the IMA, 3, 189–223.
 
 
 Xiaoqian Liu 
