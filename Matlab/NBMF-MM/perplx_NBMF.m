@@ -21,5 +21,6 @@ function perplx = perplx_NBMF(D, U, V, omega)
     ix1 = find(d);  % find indices where d!=0 or equivalently d=1
     ix0 = setdiff(1:nOmega, ix1); % indices where d=0
     
-    perplx = -sum(log(m(ix1))) - sum(log(1 - m(ix0)))/nOmega;
+    perplx = -sum(log(m(ix1))) - sum(log(1 - m(ix0)));
+    perplx = perplx/nOmega; 
 end
