@@ -5,17 +5,17 @@ Xiaoqian Liu, Xu Han, Eric Chi, and Boaz Nadler (2023). arxiv: https://arxiv.org
 
 This repository provides all the code for running the experiments in the manuscript.  
 
-The Matlab folder includes the Matlab implementation of MMGN, the proposed method for 1-bit matrix completion, and six compared methods, including TraceNorm (Davenport et. al. 2014), MaxNorm (Cai and Zhou, 2013), GD (gradient descent with backtracking), LBFGS, Manopt (manifold optimization), and NBMF-MM (nonnegative binary matrix factorization). Please find the detailed description for each method under the eponymous subfolders. 
+The Matlab folder includes the Matlab implementation of MMGN, the proposed method for 1-bit matrix completion, and six compared methods, including TraceNorm (Davenport et. al. 2014), MaxNorm (Cai and Zhou, 2013), GD (gradient descent with backtracking), LBFGS, Manopt (manifold optimization, Boumal et.al. 2014), and NBMF-MM (nonnegative binary matrix factorization, Magron. and F ́evotte, 2022). Please find the detailed description for each method under the eponymous subfolders. 
 
-The R folder includes the R implementation of MMGN for 1-bit matrix completion and two compared methods, including 1BitTC (Wang and Li, 2020) and logisticPCA (De Leeuw, 2006). Please find the detailed description for each method under the eponymous subfolders. 
+The R folder includes the R implementation of MMGN for 1-bit matrix completion and two compared methods, including logisticPCA (De Leeuw, 2006, Landgraf and Lee, 2020) and 1BitTC (Wang and Li, 2020). Please find the detailed description for each method under the eponymous subfolders. 
 
 ## References
+
+Boumal, N., Mishra, B., Absil, P.-A., and Sepulchre, R. (2014), “Manopt, a Matlab Toolbox for Optimization on Manifolds,” Journal of Machine Learning Research, 15, 1455–1459
 
 Cai, T. and Zhou, W.-X. (2013), “A max-norm constrained minimization approach to 1-bit matrix completion,” The Journal of Machine Learning Research, 14, 3619–3647.
 
 Davenport, M. A., Plan, Y., Van Den Berg, E., and Wootters, M. (2014), “1-bit matrix completion,” Information and Inference: A Journal of the IMA, 3, 189–223.
-
-Boumal, N., Mishra, B., Absil, P.-A., and Sepulchre, R. (2014), “Manopt, a Matlab Toolbox for Optimization on Manifolds,” Journal of Machine Learning Research, 15, 1455–1459
 
 De Leeuw, J. (2006), “Principal component analysis of binary data by iterated singular value decomposition,” Computational Statistics \& Data Analysis, 50, 21–39.
 
