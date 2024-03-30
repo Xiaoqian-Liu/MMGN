@@ -5,7 +5,7 @@ Xiaoqian Liu, Xu Han, Eric Chi, and Boaz Nadler (2023). arxiv: https://arxiv.org
 
 This repository provides all the code for running the experiments in the manuscript.  
 
-The Matlab folder includes the Matlab implementation of MMGN, the proposed method for 1-bit matrix completion, and six compared methods, including TraceNorm (Davenport et. al. 2014), MaxNorm (Cai and Zhou, 2013), GD (gradient descent with backtracking), LBFGS, Manopt (manifold optimization, Boumal et.al. 2014), and NBMF-MM (nonnegative binary matrix factorization, Magron. and F ́evotte, 2022). Please find the detailed description for each method under the eponymous subfolders. 
+The Matlab folder includes the Matlab implementation of MMGN, the proposed method for 1-bit matrix completion, and six compared methods, including TraceNorm (Davenport et. al. 2014), MaxNorm (Cai and Zhou, 2013), GD (gradient descent with backtracking), LBFGS (limited-memory BFGS), Manopt (manifold optimization, Boumal et.al. 2014), and NBMF-MM (nonnegative binary matrix factorization, Magron. and F ́evotte, 2022). Please find the detailed description for each method under the eponymous subfolders. 
 
 The R folder includes the R implementation of MMGN for 1-bit matrix completion and two compared methods, including logisticPCA (De Leeuw, 2006, Landgraf and Lee, 2020) and 1BitTC (Wang and Li, 2020). Please find the detailed description for each method under the eponymous subfolders. 
 
