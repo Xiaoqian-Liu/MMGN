@@ -17,8 +17,7 @@ Our implementation of logisticPCA is built upon the logisticSVD function in the 
 
 De Leeuw, J. (2006), “Principal component analysis of binary data by iterated singular value decomposition,” Computational Statistics & Data Analysis, 50, 21–39.
 
-Landgraf, A. J. and Lee, Y. (2020), “Dimensionality reduction for binary data through the
-projection of natural parameters,” Journal of Multivariate Analysis, 180, 104668.
+Landgraf, A. J. and Lee, Y. (2020), “Dimensionality reduction for binary data through the projection of natural parameters,” Journal of Multivariate Analysis, 180, 104668.
 
 
 
