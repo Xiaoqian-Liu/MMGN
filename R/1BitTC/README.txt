@@ -11,6 +11,12 @@ Binary_tensor.R implements the 1BitTC method for 1-bit tensor completion, which 
 Binary_tensor_auto.R implements the 1BitTC method for 1-bit matrix completion by considering matrices as a three-way tensor with the third mode having dimension one. It uses a data-driven approach to for selecting the rank constraint parameter r.
 
 
+===== References =====
+
+Wang, M. and Li, L. (2020), “Learning from binary multiway data: Probabilistic tensor decomposition and its statistical optimality,” Journal of Machine Learning Research, 21, 6146–6183.
+
+
+
 Xiaoqian Liu
 xiaoqian.liu1025@gmail.com
 
