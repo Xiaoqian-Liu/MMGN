@@ -9,6 +9,8 @@ The Matlab folder includes the Matlab implementation of MMGN, the proposed metho
 
 The R folder includes the R implementation of MMGN for 1-bit matrix completion and two compared methods, including logisticPCA (De Leeuw, 2006, Landgraf and Lee, 2020) and 1BitTC (Wang and Li, 2020). Please find the detailed description for each method under the eponymous subfolders. 
 
+The reproduce folder includes scripts for reproducing Fig 7 in the manuscript. See README file there in for details.
+
 ## References
 
 Boumal, N., Mishra, B., Absil, P.-A., and Sepulchre, R. (2014), “Manopt, a Matlab Toolbox for Optimization on Manifolds,” Journal of Machine Learning Research, 15, 1455–1459
